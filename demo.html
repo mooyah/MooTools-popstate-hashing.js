@@ -1,0 +1,29 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]--> 
+<meta charset="UTF-8" /> 
+<title>Popstate Testing</title> 
+</head>
+<body>
+  <a href="/page/" id="something">nice</a>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/mootools/1.2.5/mootools-yui-compressed.js"></script>
+<script type="text/javascript" src="./onhashchange.js"></script>
+<script type="text/javascript">
+window.addEvent('domready',function() {
+
+  $('something').addEvent('click',function(event) {
+    event.stop();
+    window.sethash('/page/');
+    //window.setAddress('/page/');
+  });
+
+  window.addEvent('hashchange',function(source) {
+    alert(source);
+  });
+});
+</script>
+</body>
+</html>

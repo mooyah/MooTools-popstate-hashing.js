@@ -4,7 +4,7 @@ var Address = {
 
   init:function() {
     if(this.supportsPopState()) {
-      window.addEvent('popState',this.onAddressChange.bind(this));
+      window.onpopstate = this.onAddressChange.bind(this);
     }
     else {
       window.addEvent('hashchange',this.onHashChange.bind(this));
@@ -109,11 +109,11 @@ var Address = {
 
 Address.init();
 
-window.setAddress = function(adr) {
+this.setAddress = function(adr) {
   Address.set(adr);
 };
 
-window.getAddress = function() {
+this.getAddress = function() {
   return Address.get();
 };
 
